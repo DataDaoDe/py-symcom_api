@@ -1,17 +1,19 @@
-from sympy.parsing.latex import parse_latex
-from sympy import Derivative, latex
+from sympy import Derivative
 
-def from_latex(latex_formula: str):
-    return parse_latex(latex_formula)
-
-def to_latex(expression):
-    return latex(expression)
-
-def take_derivative(formula: str, nth_derivative: int):
+def find_nth_derivative_of(
+    formula: str,
+    nth_derivative: int
+):
     dx_expression = Derivative(formula)
-    result = None
 
+    # todo: decide how to handle derivatives < 0
+
+    if nth_derivative < 1:
+        return dx_expression.doit()
+
+    result = None
     idx = 0
+
     while idx < nth_derivative:
         result = dx_expression.doit()
 
@@ -23,3 +25,4 @@ def take_derivative(formula: str, nth_derivative: int):
         idx += 1
 
     return result
+
