@@ -4,7 +4,7 @@ from sympy.ntheory import factorint
 
 def get_prime_factors(n: int) -> List[Tuple[int, int]]:
     result = factorint(n)
-    factors = list(zip(result.keys(), result.values()))
+    factors = sorted(zip(result.keys(), result.values()), key=lambda t: t[0])
     return factors
 
 def get_steps(factors: List[Tuple[int, int]]) -> List[str]:
@@ -14,8 +14,7 @@ def get_steps(factors: List[Tuple[int, int]]) -> List[str]:
     for factor in factors:
         base = factor[0]
         for p in range(0, factor[1]):
-            print(base, p)
-            steps.append({'total' : total, 'base' : base, 'div' : total // base })
+            steps.append({'total' : total, 'factor' : base, 'division_result' : total // base })
             total = total // base
 
     return steps
