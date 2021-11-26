@@ -1,8 +1,9 @@
 # SYMCOM API
 
-This project is a wrapper around computer algebra and symbolic computation libraries. It allows us
-to automatically solve equations. It also parses latex and converts from latex to symbolic math and from
-symbolic math back to latex for rendering purposes.
+This project is a stepwise computer algebra system. It is designed with education purposes in mind and therefore is mainly focused on providing easy to follow, machine and human readable, step-by-step solutions to solving mathematical problems.
+
+It can accept latex as input, parse that into sympy's symbolic expression language, and return latex as output for rendering nicely to a browser or other latex compatible rendering engines.
+
 
 ## INSTALLATION
 
@@ -14,10 +15,8 @@ poetry shell
 poetry install
 ```
 
-Now you can startup the server with.
+Now you can run the tests.
 
 ```bash
-uvicorn app.main:app --reload
+pytest
 ```
-
-And access the API docs via at [localhost:8000/docs](http://localhost:8000/docs)
